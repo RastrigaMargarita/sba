@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=UTF-8">
+    <title>Склад</title>
+</head>
+<body>
+<div><h1>Добро пожаловать на склад</h1></div>
+<h2>Сейчас на полке:</h2>
+<div><h1 th:text="${productList}" /></div>
+
+<form method="post"  action="addnew">
+    <p><input type="submit" value="Добавить новый товар>>" /></p>
+</form>
+
+</body>
+</html>

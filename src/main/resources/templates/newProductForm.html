@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=UTF-8">
+    <title>Склад</title>
+</head>
+<body>
+<h1>Новый товар</h1>
+<form action="#" th:action="makenew" method="post" modelAttribute="product">
+    <div>id: <input type="text" path="id" name="id"/></div>
+    <div>Наименование: <input type="text" path="title" name="title"/></div>
+    <div>Стоимость: <input type="text" path="cost" name="cost"/></div>
+    <div><input type="submit" value="Создать"/></div>
+</form>
+</body>
+</html>
