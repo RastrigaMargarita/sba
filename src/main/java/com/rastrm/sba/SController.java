@@ -1,6 +1,7 @@
 package com.rastrm.sba;
 
 import com.rastrm.sba.entity.Product;
+import com.rastrm.sba.repository.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class SController {
     @RequestMapping(value = "/makenew", method = RequestMethod.POST)
     public String makeProductAndReturn(@ModelAttribute("product") Product product) {
 
-        productRepository.newProduct(product);
+        productRepository.newItem(product);
         return "redirect:/";
 
     }

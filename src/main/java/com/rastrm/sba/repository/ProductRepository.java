@@ -1,5 +1,6 @@
-package com.rastrm.sba;
+package com.rastrm.sba.repository;
 
+import com.rastrm.sba.entity.EntityItem;
 import com.rastrm.sba.entity.Product;
 import org.springframework.stereotype.Repository;
 
@@ -7,7 +8,7 @@ import javax.persistence.EntityManager;
 
 
 @Repository
-public class ProductRepository {
+public class ProductRepository implements RepositoryInt {
 
     private final EntityManager entityManager;
 
@@ -16,19 +17,22 @@ public class ProductRepository {
         this.entityManager = entityManager;
     }
 
-    public void newProduct(Product product) {
+    @Override
+    public void newItem(EntityItem product) {
 
         entityManager.getTransaction().begin();
-        product.setId(0);
+        ((Product) product).setId(0);
         entityManager.persist(product);
         entityManager.flush();
         entityManager.getTransaction().commit();
     }
 
+    @Override
     public String getAllList() {
         return entityManager.createNativeQuery("select * from productlist", Product.class).getResultList().toString();
     }
 
+    @Override
     public void delByID(int id) {
         entityManager.getTransaction().begin();
         entityManager.remove(findByID(id));
@@ -37,8 +41,10 @@ public class ProductRepository {
 
     }
 
+    @Override
     public Product findByID(int id) {
         return entityManager.find(Product.class, id);
     }
+
 
 }

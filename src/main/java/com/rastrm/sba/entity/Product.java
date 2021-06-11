@@ -2,10 +2,11 @@ package com.rastrm.sba.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "productlist")
-public class Product {
+public class Product extends EntityItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,20 +16,22 @@ public class Product {
     @Column(name = "price")
     private double price;
 
-
-    public Product(int id, String title, double price) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-    }
-
-    public Product() {
-    }
-
     @Override
     public String toString() {
-        return "" + id + "{" + title + ", " + price + "}";
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                '}';
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "purchases",
+            joinColumns = @JoinColumn(name = "product"),
+            inverseJoinColumns = @JoinColumn(name = "customer")
+    )
+    private List<Product> customersList;
 
     public void setTitle(String title) {
         this.title = title;
@@ -52,5 +55,13 @@ public class Product {
 
     public int getId() {
         return id;
+    }
+
+    public List<Product> getCustomersList() {
+        return customersList;
+    }
+
+    public void setCustomersList(List<Product> customersList) {
+        this.customersList = customersList;
     }
 }
