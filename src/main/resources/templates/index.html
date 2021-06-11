@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta content="text/html; charset=UTF-8">
-    <title>Склад</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>РЎРєР»Р°Рґ</title>
 </head>
 <body>
-<div><h1>Добро пожаловать на склад</h1></div>
-<h2>Сейчас на полке:</h2>
-<div><h1 th:text="${productList}" /></div>
+<div><h1>Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° СЃРєР»Р°Рґ</h1></div>
+<h2>РЎРµР№С‡Р°СЃ РЅР° РїРѕР»РєРµ:</h2>
+<div><h1 th:text="${productList}"/></div>
 
-<form method="post"  action="addnew">
-    <p><input type="submit" value="Добавить новый товар>>" /></p>
+<form method="post" action="addnew">
+    <p><input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ С‚РѕРІР°СЂ>>"/></p>
 </form>
-
+<form method="post" action="delbyid">
+    <p><input type="submit" value="СѓРґР°Р»РёС‚СЊ С‚РѕРІР°СЂ РЅРѕРјРµСЂ >>"/>
+        <input type="number" name="id"/>
+    </p>
+</form>
 </body>
 </html>
