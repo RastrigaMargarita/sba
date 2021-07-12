@@ -1,5 +1,7 @@
 package com.rastrm.sba;
 
+import com.rastrm.sba.entity.Product;
+import com.rastrm.sba.repository.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +35,15 @@ public class SController {
     @RequestMapping(value = "/makenew", method = RequestMethod.POST)
     public String makeProductAndReturn(@ModelAttribute("product") Product product) {
 
-        productRepository.newProduct(product, product.getTitle());
+        productRepository.newItem(product);
+        return "redirect:/";
+
+    }
+
+    @RequestMapping(value = "/delbyid", method = RequestMethod.POST)
+    public String delProduct(@ModelAttribute("id") int id) {
+
+        productRepository.delByID(id);
         return "redirect:/";
 
     }
